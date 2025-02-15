@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "giss-lab1"
+version = "0.1.0"
+description = "GISS lab #1"
+authors = ["Ehor Hlioza <gleoza04@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
