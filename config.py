@@ -32,16 +32,25 @@ main_menu_struct = {
             'Bresenham': Command(),
             'Wu': Command()
         },
+        'Quadratic curve': {
+            'Circle': Command(),
+            'Ellipse': Command(),
+            'Parabola': Command(),
+            'Hyperbola': Command(),
+        },
     },
     'Debug':{
         'Debug mode': CheckButton(),
     },
 }
 
-
 main_title = "main menu"
-start_info_str = 'Information'
+start_info_str = 'Prompt will be here.'
 debug_info = 'Press Next button.'
+start_line_prompt = 'Click on line start point.'
+end_line_prompt = 'Click on line end point.'
+center_circle_prompt = 'Click on circle center.'
+point_circle_prompt = 'Click on any point of circle.'
 
 standart_color = Color.from_hex('#fff000')
 

@@ -12,6 +12,7 @@ from ..model import (
     LineWuDrawer,
 )
 from .line_tool_manager import LineToolManager
+from .circle_tool_manager import CircleToolManager
 import config
 
 class MainPresenter:
@@ -28,16 +29,11 @@ class MainPresenter:
         self._debug_step = config.debug_step
         self._painting_manager = painting_manager if painting_manager is not None else PaintingManager()
 
+        self._view.subscribe('Main.Debug.Debug mode', self._debug_checkbutton_click_handler)
         self._view.subscribe('Main.Insert.Line.DDA', self._get_line_handler(LineDDADrawer))
         self._view.subscribe('Main.Insert.Line.Bresenham', self._get_line_handler(LineBresenhamDrawer))
         self._view.subscribe('Main.Insert.Line.Wu', self._get_line_handler(LineWuDrawer))
-        self._view.subscribe('Main.Debug.Debug mode', self._debug_checkbutton_click_handler)
-
-    def _get_line_handler(self, line_drawer_type):
-        def handler(event: Event):
-            tool = LineToolManager(line_drawer_type).configure(self._view)
-            self._painting_manager.use(tool, self._canvas)
-        return handler
+        self._view.subscribe('Main.Insert.Quadratic curve.Circle', self._circle_handler)
 
     def _canvas_callback(self, x: int, y: int, color: Color):
         self._view.set_cell(x, y, color)
@@ -52,3 +48,13 @@ class MainPresenter:
         self._debug_mode = not self._debug_mode
         self._painting_manager.painter = DefaultPainter() if not self._debug_mode else DebagPainter(self._debug_painter_callback, self._debug_step)
         self._view.on_change_debug_mode(self._debug_mode)
+
+    def _get_line_handler(self, line_drawer_type):
+        def handler(event: Event):
+            tool = LineToolManager(line_drawer_type).configure(self._view)
+            self._painting_manager.use(tool, self._canvas)
+        return handler
+
+    def _circle_handler(self, event: Event):
+        tool = CircleToolManager().configure(self._view)
+        self._painting_manager.use(tool, self._canvas)
