@@ -51,6 +51,8 @@ start_line_prompt = 'Click on line start point.'
 end_line_prompt = 'Click on line end point.'
 center_circle_prompt = 'Click on circle center.'
 point_circle_prompt = 'Click on any point of circle.'
+upper_left_corner_ellipse_prompt = 'Click on first corner of ellipse.'
+lower_right_corner_ellipse_prompt = 'Click on second corner of ellipse.'
 
 standart_color = Color.from_hex('#fff000')
 

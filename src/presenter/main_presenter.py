@@ -13,6 +13,7 @@ from ..model import (
 )
 from .line_tool_manager import LineToolManager
 from .circle_tool_manager import CircleToolManager
+from .eliipse_tool_manager import EllipseToolManager
 import config
 
 class MainPresenter:
@@ -34,6 +35,7 @@ class MainPresenter:
         self._view.subscribe('Main.Insert.Line.Bresenham', self._get_line_handler(LineBresenhamDrawer))
         self._view.subscribe('Main.Insert.Line.Wu', self._get_line_handler(LineWuDrawer))
         self._view.subscribe('Main.Insert.Quadratic curve.Circle', self._circle_handler)
+        self._view.subscribe('Main.Insert.Quadratic curve.Ellipse', self._ellipse_handler)
 
     def _canvas_callback(self, x: int, y: int, color: Color):
         self._view.set_cell(x, y, color)
@@ -57,4 +59,8 @@ class MainPresenter:
 
     def _circle_handler(self, event: Event):
         tool = CircleToolManager().configure(self._view)
+        self._painting_manager.use(tool, self._canvas)
+
+    def _ellipse_handler(self, event: Event):
+        tool = EllipseToolManager().configure(self._view)
         self._painting_manager.use(tool, self._canvas)
