@@ -5,7 +5,7 @@ from .abc.line_drawer import LineDrawer
 
 
 class LineBresenhamDrawer(LineDrawer):
-    def __init__(self, start, end, color = config.standart_color):
+    def __init__(self, start, end, color = config.standard_color):
         super().__init__(start, end, color)
 
         self._next = list(start)

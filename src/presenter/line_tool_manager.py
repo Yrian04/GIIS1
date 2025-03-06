@@ -12,4 +12,4 @@ class LineToolManager(ToolManager):
         x1, y1 = view.input(config.start_line_prompt) 
         x2, y2 = view.input(config.end_line_prompt)
 
-        return LineTool(self._drawer_type, x1, y1, x2, y2, config.standart_color) 
+        return LineTool(self._drawer_type, x1, y1, x2, y2, config.standard_color) 

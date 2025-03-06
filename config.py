@@ -53,10 +53,21 @@ center_circle_prompt = 'Click on circle center.'
 point_circle_prompt = 'Click on any point of circle.'
 upper_left_corner_ellipse_prompt = 'Click on first corner of ellipse.'
 lower_right_corner_ellipse_prompt = 'Click on second corner of ellipse.'
+top_parabola_prompt = 'Click on parabola top point.'
+direction_parabola_prompt = 'Click on point where parabola will be directed.'
+center_hyperbola_prompt = 'Click on center of hyperbola'
+point_hyperbola_prompt = 'Click on point of hyperbola'
 
-standart_color = Color.from_hex('#fff000')
+standard_color = Color.from_hex('#fff000')
 
-cell_size = 20
-canvas_size = (30, 40)
+# cell_size = 20
+# canvas_size = (30, 40)
+
+# cell_size = 10
+# canvas_size = (60, 80)
+
+cell_size = 1
+canvas_size = (600, 800)
 
 debug_step = 1
+parabola_a_divider = 2 ** 12

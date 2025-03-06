@@ -10,7 +10,7 @@ class LineDrawer(Drawer, ABC):
         self,
         start: tuple[int, int],
         end: tuple[int, int],
-        color: Color = config.standart_color
+        color: Color = config.standard_color
     ):
         self.start = start
         self.end = end

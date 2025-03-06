@@ -5,7 +5,7 @@ from .abc.line_drawer import LineDrawer
 
 
 class LineDDADrawer(LineDrawer):
-    def __init__(self, start, end, color = config.standart_color):
+    def __init__(self, start, end, color = config.standard_color):
         super().__init__(start, end, color)
         self._i = 0
         self._delta = self.end[0] - self.start[0], self.end[1] - self.start[1]

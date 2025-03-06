@@ -1,7 +1,8 @@
-from src.presenter.main_presenter import MainPresenter
-from src.model.canvas import Canvas
-from src.view.main_window import MainWindow
 import config
+from src.model.canvas import Canvas
+from src.presenter.main_presenter import MainPresenter
+from src.view.main_window import MainWindow
+
 
 window = MainWindow()
 canvas = Canvas(config.canvas_size)

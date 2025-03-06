@@ -20,6 +20,7 @@ class MainWindow(Window, MainView):
         Window.__init__(self)
         MainView.__init__(self)
         self.title(config.main_title)
+        self.resizable(width=False, height=False)
         self.menu = self._build_menu()
         self.config(menu=self.menu)
 
