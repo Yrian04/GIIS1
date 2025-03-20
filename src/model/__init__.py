@@ -13,6 +13,8 @@ from .circle_drawer import CircleDrawer
 from .circle_tool import CircleTool
 from .ellipse_drawer import EllipseDrawer
 from .ellipse_tool import EllipseTool
+from .hyperbola_drawer import HyperbolaDrawer
+from .hyperbola_tool import HyperbolaTool
 
 __all__ = [
     'abc',
@@ -29,4 +31,6 @@ __all__ = [
     'CircleTool',
     'EllipseDrawer',
     'EllipseTool',
+    'HyperbolaDrawer',
+    'HyperbolaTool',
 ]

@@ -15,6 +15,7 @@ from .line_tool_manager import LineToolManager
 from .circle_tool_manager import CircleToolManager
 from .eliipse_tool_manager import EllipseToolManager
 from .parabola_tool_manager import ParabolaToolManager
+from .hyperbola_tool_manager import HyperbolaToolManager
 import config
 
 class MainPresenter:
@@ -38,6 +39,7 @@ class MainPresenter:
         self._view.subscribe('Main.Insert.Quadratic curve.Circle', self._circle_handler)
         self._view.subscribe('Main.Insert.Quadratic curve.Ellipse', self._ellipse_handler)
         self._view.subscribe('Main.Insert.Quadratic curve.Parabola', self._parabola_handler)
+        self._view.subscribe('Main.Insert.Quadratic curve.Hyperbola', self._hyperbola_handler)
 
     def _canvas_callback(self, x: int, y: int, color: Color):
         self._view.set_cell(x, y, color)
@@ -69,4 +71,8 @@ class MainPresenter:
 
     def _parabola_handler(self, event: Event):
         tool = ParabolaToolManager().configure(self._view)
+        self._painting_manager.use(tool, self._canvas)
+
+    def _hyperbola_handler(self, event: Event):
+        tool = HyperbolaToolManager().configure(self._view)
         self._painting_manager.use(tool, self._canvas)
