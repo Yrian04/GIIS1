@@ -1,5 +1,5 @@
 import config
-from ..model.ellipse_tool import EllipseTool
+from ..model import EllipseTool
 from .abc.tool_manager import ToolManager
 
 
@@ -15,4 +15,4 @@ class EllipseToolManager(ToolManager):
             max(first_point[0], second_point[0]),
             max(first_point[1], second_point[1])
         )
-        return EllipseTool(upper_left_corner, lower_right_corner, config.standard_color)
+        return EllipseTool(upper_left_corner, lower_right_corner, config.default_color)

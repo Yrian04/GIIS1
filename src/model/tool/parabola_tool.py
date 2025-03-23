@@ -1,8 +1,6 @@
-from enum import Enum
-
-from ..abc.color import Color
-from .abc.tool import Tool
-from .parabola_drawer import ParabolaDrawer, ParabolaDirection
+from ..color import Color
+from ..abc.tool import Tool
+from ..drawer.parabola_drawer import ParabolaDrawer, ParabolaDirection
 
 
 class ParabolaTool(Tool):

@@ -1,9 +1,9 @@
 from typing import Literal, TypeAlias
 
-from ..abc.color import Color
-from ..utils import sign
-from .abc.drawer import Drawer
-from .canvas import Canvas
+from ..color import Color
+from ...utils import sign
+from ..abc.drawer import Drawer
+from ..canvas import Canvas
 
 
 ParabolaDirection: TypeAlias = Literal['up', 'right', 'down', 'left']

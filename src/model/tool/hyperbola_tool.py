@@ -1,7 +1,6 @@
-# src/model/hyperbola_tool.py
-from ..abc.color import Color
-from .abc.tool import Tool
-from .hyperbola_drawer import HyperbolaDrawer
+from ..color import Color
+from ..abc.tool import Tool
+from ..drawer.hyperbola_drawer import HyperbolaDrawer
 
 
 class HyperbolaTool(Tool):

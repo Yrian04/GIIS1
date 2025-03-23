@@ -1,6 +1,6 @@
 from .abc.painter import Painter
 from .abc.tool import Tool
-from .default_painter import DefaultPainter
+from .painter.default_painter import DefaultPainter
 from .canvas import Canvas
 
 

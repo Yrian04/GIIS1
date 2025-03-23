@@ -1,7 +1,6 @@
-from src.model.abc.drawer import Drawer
-from src.model.canvas import Canvas
-from src.abc.color import Color
-from typing import Tuple
+from ..abc.drawer import Drawer
+from ...model.canvas import Canvas
+from ..color import Color
 
 
 class HyperbolaDrawer(Drawer):

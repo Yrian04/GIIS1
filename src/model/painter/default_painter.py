@@ -1,4 +1,4 @@
-from .abc.painter import Painter
+from ..abc.painter import Painter
 
 
 class DefaultPainter(Painter):

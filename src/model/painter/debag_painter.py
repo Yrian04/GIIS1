@@ -1,6 +1,6 @@
 from typing import Callable
 
-from .abc.painter import Painter
+from ..abc.painter import Painter
 
 
 class DebagPainter(Painter):
@@ -14,10 +14,7 @@ class DebagPainter(Painter):
         def stop():
             nonlocal i
             i += 1
-            if i % self.n != 0:
-                return True
-            else:
-                return self._callback()
+            return True if i % self.n != 0 else self._callback()
 
         while drawer.draw(canvas) and stop():
             pass

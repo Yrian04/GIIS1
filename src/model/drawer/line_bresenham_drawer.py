@@ -1,11 +1,10 @@
-import config
-from ..utils.sign import sign
-from .abc.line_drawer import LineDrawer
+from ...utils.sign import sign
+from ..abc.line_drawer import LineDrawer
 
 
 
 class LineBresenhamDrawer(LineDrawer):
-    def __init__(self, start, end, color = config.standard_color):
+    def __init__(self, start, end, color):
         super().__init__(start, end, color)
 
         self._next = list(start)

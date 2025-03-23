@@ -1,4 +1,4 @@
-from ..abc.color import Color
+from .color import Color
 
 
 class Canvas:

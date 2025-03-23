@@ -1,5 +1,7 @@
 from ..abc.event import Event
 
+import config
+
 from ..view import MainView
 from ..model import (
     PaintingManager,
@@ -11,12 +13,13 @@ from ..model import (
     LineBresenhamDrawer,
     LineWuDrawer,
 )
+from .abc.tool_manager import ToolManager
 from .line_tool_manager import LineToolManager
 from .circle_tool_manager import CircleToolManager
 from .eliipse_tool_manager import EllipseToolManager
 from .parabola_tool_manager import ParabolaToolManager
 from .hyperbola_tool_manager import HyperbolaToolManager
-import config
+
 
 class MainPresenter:
     def __init__(
@@ -31,15 +34,20 @@ class MainPresenter:
         self._debug_mode = False
         self._debug_step = config.debug_step
         self._painting_manager = painting_manager if painting_manager is not None else PaintingManager()
-
-        self._view.subscribe('Main.Debug.Debug mode', self._debug_checkbutton_click_handler)
-        self._view.subscribe('Main.Insert.Line.DDA', self._get_line_handler(LineDDADrawer))
-        self._view.subscribe('Main.Insert.Line.Bresenham', self._get_line_handler(LineBresenhamDrawer))
-        self._view.subscribe('Main.Insert.Line.Wu', self._get_line_handler(LineWuDrawer))
-        self._view.subscribe('Main.Insert.Quadratic curve.Circle', self._circle_handler)
-        self._view.subscribe('Main.Insert.Quadratic curve.Ellipse', self._ellipse_handler)
-        self._view.subscribe('Main.Insert.Quadratic curve.Parabola', self._parabola_handler)
-        self._view.subscribe('Main.Insert.Quadratic curve.Hyperbola', self._hyperbola_handler)
+        
+        subscribe_map = {
+            'Main.Debug.Debug mode': self._debug_checkbutton_click_handler,
+            'Main.Insert.Line.DDA': self._get_figure_handler(LineToolManager(LineDDADrawer)),
+            'Main.Insert.Line.Bresenham': self._get_figure_handler(LineToolManager(LineBresenhamDrawer)),
+            'Main.Insert.Line.Wu': self._get_figure_handler(LineToolManager(LineWuDrawer)),
+            'Main.Insert.Quadratic curve.Circle': self._get_figure_handler(CircleToolManager()),
+            'Main.Insert.Quadratic curve.Ellipse': self._get_figure_handler(EllipseToolManager()),
+            'Main.Insert.Quadratic curve.Parabola': self._get_figure_handler(ParabolaToolManager()),
+            'Main.Insert.Quadratic curve.Hyperbola': self._get_figure_handler(HyperbolaToolManager()),
+        }
+        
+        for tag, callback in subscribe_map.items():
+            self._view.subscribe(tag, callback)
 
     def _canvas_callback(self, x: int, y: int, color: Color):
         self._view.set_cell(x, y, color)
@@ -52,7 +60,7 @@ class MainPresenter:
 
     def _debug_checkbutton_click_handler(self, event: Event):
         self._debug_mode = not self._debug_mode
-        self._painting_manager.painter = DefaultPainter() if not self._debug_mode else DebagPainter(self._debug_painter_callback, self._debug_step)
+        self._painting_manager.painter = DebagPainter(self._debug_painter_callback, self._debug_step) if self._debug_mode else DefaultPainter()
         self._view.on_change_debug_mode(self._debug_mode)
 
     def _get_line_handler(self, line_drawer_type):
@@ -76,3 +84,10 @@ class MainPresenter:
     def _hyperbola_handler(self, event: Event):
         tool = HyperbolaToolManager().configure(self._view)
         self._painting_manager.use(tool, self._canvas)
+        
+    def _get_figure_handler(self, tool_manager: ToolManager):
+        def handler(event: Event):
+            tool = tool_manager.configure(self._view)
+            self._painting_manager.use(tool, self._canvas)
+        
+        return handler

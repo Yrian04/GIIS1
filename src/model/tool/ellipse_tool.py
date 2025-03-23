@@ -1,6 +1,6 @@
-from ..abc.color import Color
-from .abc.tool import Tool
-from .ellipse_drawer import EllipseDrawer
+from ..color import Color
+from ..abc.tool import Tool
+from ..drawer.ellipse_drawer import EllipseDrawer
 
 
 class EllipseTool(Tool):

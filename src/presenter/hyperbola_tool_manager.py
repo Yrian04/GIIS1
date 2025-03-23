@@ -1,5 +1,5 @@
 import config
-from ..model.hyperbola_tool import HyperbolaTool
+from ..model import HyperbolaTool
 from .abc.tool_manager import ToolManager
 
 
@@ -11,4 +11,4 @@ class HyperbolaToolManager(ToolManager):
         dy = point[1] - center[1]
         a = abs(dx)
         b = abs(dy)
-        return HyperbolaTool(center, a, b, config.standard_color)
+        return HyperbolaTool(center, a, b, config.default_color)

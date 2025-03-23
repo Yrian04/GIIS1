@@ -1,8 +1,8 @@
 import math
 
-from ..abc.color import Color
-from .abc.tool import Tool
-from .circle_drawer import CircleDrawer
+from ..color import Color
+from ..abc.tool import Tool
+from ..drawer.circle_drawer import CircleDrawer
 
 
 class CircleTool(Tool):

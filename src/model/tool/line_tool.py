@@ -1,12 +1,12 @@
-from .abc.tool import Tool
-from ..abc.color import Color
-from .abc.line_drawer import LineDrawer
+from ..abc.tool import Tool
+from ..color import Color
+from ..abc.line_drawer import LineDrawer
 
 
 class LineTool(Tool):
     def __init__(
         self,
-        drawer_type,
+        drawer_type: type[LineDrawer],
         start_x: int,
         start_y: int,
         end_x: int,

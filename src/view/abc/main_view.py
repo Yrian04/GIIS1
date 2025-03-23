@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from ...abc.color import Color
+from ...model.color import Color
 from .view import View
 
 

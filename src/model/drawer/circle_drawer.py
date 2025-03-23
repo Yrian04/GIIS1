@@ -1,6 +1,6 @@
-from ..abc.color import Color
-from .abc.drawer import Drawer
-from .canvas import Canvas
+from ..color import Color
+from ..abc.drawer import Drawer
+from ..canvas import Canvas
 
 
 class CircleDrawer(Drawer):

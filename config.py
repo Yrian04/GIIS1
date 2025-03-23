@@ -1,5 +1,5 @@
 from src.view.abc.window import Command, CheckButton
-from src.abc.color import Color
+from src.model.color import Color
 
 main_pack_args = {
     'fill': 'x'
@@ -58,7 +58,7 @@ direction_parabola_prompt = 'Click on point where parabola will be directed.'
 center_hyperbola_prompt = 'Click on center of hyperbola'
 point_hyperbola_prompt = 'Click on point of hyperbola'
 
-standard_color = Color.from_hex('#fff000')
+default_color = Color.from_hex('#fff000')
 
 # cell_size = 20
 # canvas_size = (30, 40)
